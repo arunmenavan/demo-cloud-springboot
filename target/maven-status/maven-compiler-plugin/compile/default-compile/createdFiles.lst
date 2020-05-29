@@ -1,3 +1,4 @@
+com/ais/clouddemo/webapp/model/BusinessUnitItem.class
 com/ais/clouddemo/webapp/model/JDEDataRequest.class
 com/ais/clouddemo/webapp/controller/ErrorController.class
 com/ais/clouddemo/webapp/model/ConditionItem.class
@@ -9,6 +10,7 @@ com/ais/clouddemo/webapp/model/AggregationItem.class
 com/ais/clouddemo/webapp/model/AggregateAPIResponseItem.class
 com/ais/clouddemo/webapp/service/JDEDataService.class
 com/ais/clouddemo/webapp/model/AggregateAPIResponse.class
+com/ais/clouddemo/webapp/model/FO60116Aggregation.class
 com/ais/clouddemo/webapp/util/RestTemplateConfig.class
 com/ais/clouddemo/webapp/security/SecurityConfiguration.class
 com/ais/clouddemo/webapp/model/ServerCapability.class
