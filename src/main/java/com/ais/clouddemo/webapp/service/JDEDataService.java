@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.ais.clouddemo.webapp.model.AggregateAPIResponse;
 import com.ais.clouddemo.webapp.model.Aggregation;
 import com.ais.clouddemo.webapp.model.AggregationItem;
 import com.ais.clouddemo.webapp.model.ConditionItem;
@@ -85,9 +86,11 @@ public class JDEDataService {
 			String requestString = getJDEDataRequestJSON( getJDEDataRequest() );
 			LOGGER.info(" Request "+ requestString);
 			responseMap = restClient.post(resourceEndPoint, requestString);
-	//		ServerConfig serverConfig = readJSONServerConfig (responseMap.get("responseBody"));
+			AggregateAPIResponse aggregateAPIResponse = readJSONAggregateAPIResponse(responseMap.get("responseBody"));
 			resJDEResource.setHttpResponseBody(responseMap.get("responseBody"));
 			resJDEResource.setHttpResponseCode(responseMap.get("httpCode"));
+			resJDEResource.setAggregateAPIResponse(aggregateAPIResponse);
+			LOGGER.info(" AggregateAPIResponse Object {}",aggregateAPIResponse );
 
 		} else if (resourceName.equalsIgnoreCase(Resource.TOKENREQUEST.getResourceName())) {
              String token = getAccessToken();
@@ -197,6 +200,14 @@ public class JDEDataService {
 		JsonNode node = mapper.readTree(responseMap.get("responseBody"));
 		tokenString = node.path("userInfo").path("token").asText();
 		return tokenString;
+	}
+	
+	private AggregateAPIResponse readJSONAggregateAPIResponse (String jsonResponse) throws JsonParseException, JsonMappingException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+		AggregateAPIResponse aggregateAPIResponse = mapper.readValue(jsonResponse, AggregateAPIResponse.class);
+		return aggregateAPIResponse;
+		
 	}
 
 

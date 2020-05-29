@@ -50,6 +50,7 @@ public class JDEDataController {
 		JDEResource resResource = jdeDataService.findByName("dataservice");
 		model.addAttribute("resBody", resResource.getHttpResponseBody());
 		model.addAttribute("resCode",resResource.getHttpResponseCode());
+		model.addAttribute("apiResponse", resResource.getAggregateAPIResponse().getDs_F060116());
 		return "receiveddata-aggregationAPI";
 		
 	}

@@ -7,8 +7,19 @@ public class JDEResource {
 	private String httpResponseCode;
 	private String httpResponseBody;
 	private ServerConfig serverConfig;
+	private AggregateAPIResponse aggregateAPIResponse;
 	
 	
+	public AggregateAPIResponse getAggregateAPIResponse() {
+		return aggregateAPIResponse;
+	}
+
+
+	public void setAggregateAPIResponse(AggregateAPIResponse aggregateAPIResponse) {
+		this.aggregateAPIResponse = aggregateAPIResponse;
+	}
+
+
 	public ServerConfig getServerConfig() {
 		return serverConfig;
 	}
